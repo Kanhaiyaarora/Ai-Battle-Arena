@@ -29,8 +29,14 @@ const solutionNode: GraphNode<typeof state> = async (state) => {
   ]);
   return {
     problem: state.problem,
-    solution_1: typeof mistralAISolution.content === 'string' ? mistralAISolution.content : JSON.stringify(mistralAISolution.content),
-    solution_2: typeof cohereSolution.content === 'string' ? cohereSolution.content : JSON.stringify(cohereSolution.content),
+    solution_1:
+      typeof mistralAISolution.content === "string"
+        ? mistralAISolution.content
+        : JSON.stringify(mistralAISolution.content),
+    solution_2:
+      typeof cohereSolution.content === "string"
+        ? cohereSolution.content
+        : JSON.stringify(cohereSolution.content),
     judge: {
       solution_1_score: 0,
       solution_2_score: 0,
@@ -102,8 +108,12 @@ const graph = new StateGraph(state)
   .compile();
 
 export default async function (problem: string) {
-  const result = await graph.invoke({
-    problem,
-  });
-  return result;
+  try {
+    const result = await graph.invoke({
+      problem,
+    });
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
 }

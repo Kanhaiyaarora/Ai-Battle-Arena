@@ -2,6 +2,9 @@ import express from "express";
 import runGraph from "./ai/langGraph.ai.js";
 import cors from "cors";
 const app = express();
+import morgan from "morgan";
+
+app.use(morgan("dev"));
 
 app.use(express.json());
 app.use(
@@ -13,7 +16,7 @@ app.use(
 );
 
 app.get("/", async (req, res) => {
-    res.status(200).json({ message: "Welcome to the AI Comparison API" });
+  res.status(200).json({ message: "Welcome to the AI Comparison API" });
 });
 
 app.post("/invoke", async (req, res) => {
