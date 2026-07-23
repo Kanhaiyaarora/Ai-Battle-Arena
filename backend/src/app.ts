@@ -25,7 +25,7 @@ app.get("/", async (req, res) => {
   res.status(200).json({ message: "Welcome to the AI Comparison API" });
 });
 
-app.get("/.*/", (req, res) => {
+app.get(/.*/, (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html')); // Serve index.html for all other routes
 });
 
