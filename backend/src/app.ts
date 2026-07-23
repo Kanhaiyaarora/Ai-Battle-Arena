@@ -19,14 +19,14 @@ app.use(
     credentials: true, // Allow cookies to be sent with requests
   }),
 );
-app.use(express.static(path.join(__dirname, 'public'))); // Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, '../public'))); // Serve static files from the 'public' directory
 
 // app.get("/", async (req, res) => {
 //   res.status(200).json({ message: "Welcome to the AI Comparison API" });
 // });
 
 app.get(/.*/, (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html')); // Serve index.html for all other routes
+  res.sendFile(path.join(__dirname, '../public', 'index.html')); // Serve index.html for all other routes
 });
 
 app.post("/invoke", async (req, res) => {
