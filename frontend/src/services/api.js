@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Creating an axios instance with base URL setup
 const api = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "https://ai-battle-arena-upfa.onrender.com",
   headers: {
     "Content-Type": "application/json",
   },

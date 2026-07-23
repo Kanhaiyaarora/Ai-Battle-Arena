@@ -3,6 +3,11 @@ import runGraph from "./ai/langGraph.ai.js";
 import cors from "cors";
 const app = express();
 import morgan from "morgan";
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 app.use(morgan("dev"));
 
@@ -14,9 +19,14 @@ app.use(
     credentials: true, // Allow cookies to be sent with requests
   }),
 );
+app.use(express.static(path.join(__dirname, 'public'))); // Serve static files from the 'public' directory
 
 app.get("/", async (req, res) => {
   res.status(200).json({ message: "Welcome to the AI Comparison API" });
+});
+
+app.get("/.*/", (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html')); // Serve index.html for all other routes
 });
 
 app.post("/invoke", async (req, res) => {
