@@ -6,7 +6,7 @@
 
 ## 🌐 Live Demo
 
-🔗 Available soon...
+🔗 https://ai-battle-arena-upfa.onrender.com
 
 ---
 
